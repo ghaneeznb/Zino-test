@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 @Component({
   selector: 'app-registration-user',
   templateUrl: './registration-user.component.html',
-  styleUrls: ['./registration-user.component.css']
+  styleUrls: ['./registration-user.component.scss']
 })
 export class RegistrationUserComponent{
 
@@ -44,7 +44,7 @@ export class RegistrationUserComponent{
       lastName: new FormControl("", [Validators.required]),
       dateOfBirth: new FormControl(new Date(), [Validators.required,]),  // Validators.pattern("dd/MM/yyyy")
       nationality: new FormControl("", [Validators.required]),
-      socialSecurityNumber: new FormControl("", [Validators.required, Validators.pattern("[0-9 ]")]),
+      socialSecurityNumber: new FormControl(0, Validators.required),
     }),
     addressInfo: new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),

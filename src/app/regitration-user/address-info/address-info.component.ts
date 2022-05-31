@@ -28,15 +28,6 @@ export class AddressInfoComponent{
     public selectedcity = "";
 
   constructor() { }
-  
-    // addressInfo =  new FormGroup({
-    //   email: new FormControl("", [Validators.required, Validators.email]),
-    //   phoneNumber: new FormControl(undefined, [Validators.required]),
-    //   postalCode: new FormControl("", Validators.required),
-    //   country: new FormControl("", [Validators.required]),
-    //   city: new FormControl("", [Validators.required]),
-    //   address: new FormControl("", [Validators.required])
-    // });
 
     public next(): void {
       if (this.addressInfo.valid && this.currentStep !== this.steps.length) {

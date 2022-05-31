@@ -1,0 +1,26 @@
+
+:host ::ng-deep{
+    
+  .k-stepper {
+    align-self: center;
+  }
+  .k-step {
+    pointer-events: none;
+  }
+  .container .content {
+    align-self: center;
+  }
+  .k-form-separator {
+    margin-top: 40px;
+  }
+  .k-buttons-center {
+    justify-content: space-between;
+    align-content: center;
+  }
+  .page {
+    align-self: center;
+  }
+  .k-form {
+    width: 450px;
+  }
+}

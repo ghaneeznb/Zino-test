@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
-  styleUrls: ['./personal-info.component.css']
+  styleUrls: ['./personal-info.component.scss']
 })
 export class PersonalInfoComponent{
 
@@ -21,7 +21,7 @@ export class PersonalInfoComponent{
   //   lastName: new FormControl("", [Validators.required]),
   //   dateOfBirth: new FormControl(new Date(), [Validators.required,]),  // Validators.pattern("dd/MM/yyyy")
   //   nationality: new FormControl("", [Validators.required]),
-  //   socialSecurityNumber: new FormControl("", [Validators.required, Validators.pattern("[0-9 ]")]),
+  //   socialSecurityNumber: new FormControl(0, [Validators.required, Validators.pattern("[0-9 ]")]),
   // });
 
   public next(): void {

@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-confirmation-info',
   templateUrl: './confirmation-info.component.html',
-  styleUrls: ['./confirmation-info.component.css']
+  styleUrls: ['./confirmation-info.component.scss']
 })
 export class ConfirmationInfoComponent implements OnInit {
 

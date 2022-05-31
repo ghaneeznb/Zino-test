@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,11 +23,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    RegistrationUserComponent,
+    AppComponent,
     HomeComponent,
+    RegistrationUserComponent,
     PersonalInfoComponent,
     AddressInfoComponent,
-    ConfirmationInfoComponent,
+    ConfirmationInfoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -43,9 +45,11 @@ import { AppRoutingModule } from './app-routing.module';
     DropDownsModule,
     NgxIntlTelInputModule,
     TooltipModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
