@@ -1,0 +1,32 @@
+
+      <kendo-stepper [steps]="steps" stepType="full" [(currentStep)]="currentStep" [style.width.px]="570"></kendo-stepper>
+    <div class="content">
+      <form class="k-form" [formGroup]="form">
+
+        <app-personal-info
+          *ngIf="currentStep === 0"
+          [personalInfo]="currentGroup"
+        ></app-personal-info>
+
+        <app-address-info
+          *ngIf="currentStep === 1"
+          [addressInfo]="currentGroup"
+        ></app-address-info>
+
+        <app-confirmation-info
+          *ngIf="currentStep === 2"
+          [formDetails]="form"
+        ></app-confirmation-info>
+
+        <span class="k-form-separator"></span>
+        <div class="k-form-buttons k-buttons-center">
+          <span class="page">Step {{ currentStep + 1 }} of 3</span>
+          <div>
+            <button  class="k-button" *ngIf="currentStep !== 0" (click)="prev()"> Previous</button>
+            <button class="k-button k-primary" (click)="next()"> {{ currentStep !== 2 ? "Next" : "Submit" }} </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
