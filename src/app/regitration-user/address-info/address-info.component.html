@@ -1,51 +1,69 @@
+
 <ng-container [formGroup]="addressInfo">
-    <kendo-formfield>
-        <kendo-label [for]="email" text="phoneNumber"></kendo-label>
-        <ngx-intl-tel-input [preferredCountries]="preferredCountries"
-            [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
-            [searchCountryField]="[SearchCountryField.Iso2,SearchCountryField.Name]" [selectFirstCountry]="false"
-            [selectedCountryISO]="CountryISO.India" [phoneValidation]="true"
-            [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" #phoneNumber
-            formControlName="phoneNumber">
-        </ngx-intl-tel-input> 
-        <ng-container class="alert alert-danger" *ngIf="!addressInfo.controls['phoneNumber'].valid && addressInfo.controls['phoneNumber'].touched">
-            <kendo-formerror  *ngIf="addressInfo.controls['phoneNumber'].errors?.['required']">
-                Phone number is required.</kendo-formerror>
-            <kendo-formerror  *ngIf="addressInfo.controls['phoneNumber'].errors">
-                Phone number need to have 10 character
-            </kendo-formerror>
-        </ng-container>
-    </kendo-formfield>
+    <div class="form-row">
+      <div class="form-group col-6">
+        <kendo-formfield>
+          <kendo-label [for]="email" text="phoneNumber"></kendo-label>
+            <ngx-intl-tel-input [preferredCountries]="preferredCountries"
+              [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+              [searchCountryField]="[SearchCountryField.Iso2,SearchCountryField.Name]" [selectFirstCountry]="false"
+              [selectedCountryISO]="CountryISO.India" [phoneValidation]="true"
+              [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" #phoneNumber
+              formControlName="phoneNumber">
+            </ngx-intl-tel-input> 
+            <ng-container class="alert alert-danger" *ngIf="!addressInfo.controls['phoneNumber'].valid && addressInfo.controls['phoneNumber'].touched">
+              <kendo-formerror  *ngIf="addressInfo.controls['phoneNumber'].errors?.['required']">Phone number is required.</kendo-formerror>
+              <kendo-formerror  *ngIf="addressInfo.controls['phoneNumber'].errors"> Phone number need to have 11 character. </kendo-formerror>
+            </ng-container>
+        </kendo-formfield>
+      </div>
+      <div class="form-group col-6">
+        <kendo-formfield>
+          <kendo-label [for]="email" text="Email"></kendo-label>
+          <input [formControlName]="'email'" kendoTextBox #email/>
+          <kendo-formerror *ngIf="addressInfo.controls['email'].errors?.['required']">Email is required</kendo-formerror>
+          <kendo-formerror *ngIf="addressInfo.controls['email'].errors">Not a valid email format</kendo-formerror>
+        </kendo-formfield>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-4">
+        <div class="input-group mb-3">
+            <select class="form-select" id="inputGroupSelect02">
+              <option *ngFor="let item in country"></option>
+            </select>
+        </div>
+        <kendo-formfield>
+          <kendo-label [for]="country" text="Country"></kendo-label>
+          <kendo-combobox [data]="country" #country></kendo-combobox>
+        </kendo-formfield>
+      </div>
+      <div class="form-group col-4">
+        <kendo-formfield>
+          <kendo-label [for]="city" text="City"></kendo-label>
+          <kendo-combobox [data]="city" #city></kendo-combobox>
+        </kendo-formfield> 
+      </div>
+      <div class="form-group col-4">
+        <kendo-formfield>
+          <kendo-label [for]="postalCode" text="PostalCode"></kendo-label>
+          <input [formControlName]="'postalCode'" kendoTextBox #postalCode/>
+          <kendo-formerror *ngIf="addressInfo.controls['postalCode'].errors?.['required']">PostalCode is required</kendo-formerror>
+        </kendo-formfield>
+      </div>
+    </div>
 
-    <kendo-formfield>
-        <kendo-label [for]="email" text="Email"></kendo-label>
-        <input [formControlName]="'email'" kendoTextBox #email/>
-        <kendo-formerror *ngIf="addressInfo.controls['email'].errors?.['required']">Email is required</kendo-formerror>
-        <kendo-formerror *ngIf="addressInfo.controls['email'].errors">Not a valid email format</kendo-formerror>
-    </kendo-formfield>
-
-    <kendo-formfield>
-        <kendo-label [for]="postalCode" text="PostalCode"></kendo-label>
-        <input [formControlName]="'postalCode'" kendoTextBox #postalCode/>
-        <kendo-formerror *ngIf="addressInfo.controls['postalCode'].errors?.['required']">PostalCode is required</kendo-formerror>
-    </kendo-formfield>
-
-    <kendo-combobox [data]="country" ></kendo-combobox>
-
-    <kendo-combobox [data]="city" ></kendo-combobox>
-
-    <kendo-formfield>
-        <kendo-label [for]="postalCode" text="PostalCode"></kendo-label>
-        <input [formControlName]="'postalCode'" kendoTextBox #postalCode/>
-        <kendo-formerror *ngIf="addressInfo.controls['postalCode'].errors?.['required']">PostalCode is required</kendo-formerror>
-    </kendo-formfield>
-
-    <kendo-formfield>
-        <kendo-label [for]="address" text="Address"></kendo-label>
-        <kendo-textarea [formControlName]="'address'" #address minlength="5"></kendo-textarea>
-        <kendo-formerror *ngIf="addressInfo.controls['address'].errors?.['required']">Address is required</kendo-formerror>
-    </kendo-formfield>
+    <div class="form-row">
+      <div class="form-group col-4">
+        <kendo-formfield>
+          <kendo-label [for]="address" text="Address"></kendo-label>
+          <kendo-textarea [formControlName]="'address'" #address minlength="5"></kendo-textarea>
+          <kendo-formerror *ngIf="addressInfo.controls['address'].errors?.['required']">Address is required</kendo-formerror>
+        </kendo-formfield>
+      </div>
+    </div>
 </ng-container>
+
 
 
 

@@ -2,7 +2,7 @@
   <div class="row d-flex justify-content-center">
     <kendo-stepper [steps]="steps" stepType="full" [(currentStep)]="currentStep" [style.width.px]="570"></kendo-stepper>
     <div class="content">
-      <form class="k-form" [formGroup]="form">
+      <form class="k-form" [formGroup]="form" (ngSubmit)="submitForm()">
 
         <app-personal-info
           *ngIf="currentStep === 0"
@@ -24,7 +24,7 @@
           <span class="page">Step {{ currentStep + 1 }} of 3</span>
           <div>
             <button  class="k-button" *ngIf="currentStep !== 0" (click)="prev()"> Previous</button>
-            <button class="k-button k-primary" (click)="next()"> {{ currentStep !== 2 ? "Next" : "Submit" }} </button>
+            <button class="k-button k-primary" (click)="next()" type="submit"> {{ currentStep !== 2 ? "Next" : "Submit" }} </button>
           </div>
         </div>
       </form>

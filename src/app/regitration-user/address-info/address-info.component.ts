@@ -21,11 +21,11 @@ export class AddressInfoComponent{
   preferredCountries: CountryISO[] = [CountryISO.UnitedStates, 
     CountryISO.UnitedKingdom]
 
-    public country: Array<string> = [];
-    public selectedcountry = "";
+    country= ["iran","india", "iraq"];
+    public selectedcountry = "iran";
 
-    public city: Array<string> = [];
-    public selectedcity = "";
+    city= ["kish", "tehran"];
+    public selectedcity = "kish";
 
   constructor() { }
 

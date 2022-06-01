@@ -29,7 +29,6 @@ export class RegistrationUserComponent{
     {
       label: "Confirmation",
       icon: "checkmark",
-      isValid: this.isStepValid
     },
   ];
 
@@ -66,9 +65,11 @@ export class RegistrationUserComponent{
       this.currentStep += 1;
       return;
     }
-
-    this.steps = this.steps.map(step => ({ ...step }));
     this.currentGroup.markAllAsTouched();
+  }
+
+  submitForm(){
+    this.formDetails = this.form.value;
   }
 
  prev() {

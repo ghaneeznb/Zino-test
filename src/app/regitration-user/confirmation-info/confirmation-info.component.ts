@@ -13,6 +13,8 @@ export class ConfirmationInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    console.log(this.formDetails);
   }
 
 }

@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationUserComponent } from './regitration-user/registration-user.component';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { DateInputsModule } from "@progress/kendo-angular-dateinputs";
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AppRoutingModule } from './app-routing.module';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -46,6 +48,11 @@ import { AppRoutingModule } from './app-routing.module';
     NgxIntlTelInputModule,
     TooltipModule.forRoot(),
     AppRoutingModule,
+    MatStepperModule,
+    FormsModule,
+    InputsModule,
+    ButtonsModule,
+    MatListModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
