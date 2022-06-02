@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { RegistrationUserComponent } from './regitration-user/registration-user.component';
+import { RegistrationUserComponent } from './registration-user/registration-user.component';
 
 const routes: Routes = [
   

@@ -14,12 +14,10 @@ export class RegistrationUserComponent{
   public steps = [
     { 
       label: "Personal Info",
-      isValid: this.isStepValid,
-      validate: this.shouldValidate.bind(this)
+      isValid: this.isStepValid
     },
     { label: "Address Info",
-      isValid: this.isStepValid,
-      validate: this.shouldValidate.bind(this)
+      isValid: this.isStepValid
     },
     {
       label: "Confirmation",
@@ -43,8 +41,9 @@ export class RegistrationUserComponent{
       email: new FormControl("", [Validators.required, Validators.email]),
       phoneNumber: new FormControl("",[ Validators.required,  Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]),
       postalCode: new FormControl("", Validators.required),
-      country: new FormControl("", [Validators.required]),
-      city: new FormControl("", [Validators.required]),
+      // country: new FormControl("", [Validators.required]),
+      // state: new FormControl("", [Validators.required]),
+      // city: new FormControl("", [Validators.required]),
       address: new FormControl("", [Validators.required])
     }),
   });
@@ -55,10 +54,6 @@ export class RegistrationUserComponent{
 
   isStepValid(index: number): boolean {
     return this.getGroupAt(index).valid || this.currentGroup.untouched;
-  }
-
-  shouldValidate(index: number): boolean {
-    return this.getGroupAt(index).touched && this.currentStep >= index;
   }
 
  next(): void {
