@@ -52,7 +52,7 @@ import {MatListModule} from '@angular/material/list';
     FormsModule,
     InputsModule,
     ButtonsModule,
-    MatListModule
+    HttpClientModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],

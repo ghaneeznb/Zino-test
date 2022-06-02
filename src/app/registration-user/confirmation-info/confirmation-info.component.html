@@ -1,1 +1,74 @@
-<p>{{formDetails.value.personalInfo.firstName}}</p>
+<h1>Review Details</h1>
+<div class="card">
+<h3 class="my-2">Personal Information:</h3>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>the customer name: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span *ngIf="formDetails.value.personalInfo.gender == 'male'" >Mr</span>
+            <span *ngIf="formDetails.value.personalInfo.gender == 'Female'" >Mrs</span>
+            <span>{{formDetails.value.personalInfo.initials| uppercase}}.{{formDetails.value.personalInfo.lastname | titlecase}} {{formDetails.value.personalInfo.firstName | titlecase}}</span>
+        </div>
+    </div>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>The customer birthdate: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.personalInfo.dateOfBirth |date:'longDate'}}</span>
+        </div>
+    </div>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>He/ She is a/an: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.personalInfo.nationality}}</span>
+        </div>
+    </div>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>His/ Her socialnumber is: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.personalInfo.socialSecurityNumber}}</span>
+        </div>
+    </div>
+    <hr class="my-3">
+    <h3>Address Information:</h3>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>The customer is from: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.addressInfo.city | titlecase}}.{{formDetails.value.addressInfo.country | titlecase}}</span>
+        </div>
+    </div>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>His/ Her Phonenumber is: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.addressInfo.phoneNumber}}</span>
+        </div>
+    </div>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>His/ Her Email is: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.addressInfo.email}}</span>
+        </div>
+    </div>
+    <div class="row d-flex justify-content my-2">
+        <div class="col-6 text-left">
+            <strong>His/ Her address is: </strong>
+        </div>
+        <div class="col-6 text-left">
+            <span>{{formDetails.value.addressInfo.address}}</span>
+            <span>Postalcode: {{formDetails.value.addressInfo.postalCode}}</span>
+        </div>
+    </div>
+</div>
+

@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-address-info',
@@ -14,37 +15,32 @@ export class AddressInfoComponent{
   @Input() steps : any;
   @Input() addressInfo!: FormGroup;
 
-  separateDialCode = true;
-  SearchCountryField = SearchCountryField;
-  CountryISO = CountryISO;
-  PhoneNumberFormat = PhoneNumberFormat;
+    stateInfo: any;
+    countryInfo: any;
+    cityInfo: any;
 
-  preferredCountries: CountryISO[] = [CountryISO.UnitedStates, 
-    CountryISO.UnitedKingdom]
-
-    country= [];
-    public selectedcountry = "";
-
-    city= [];
-    public selectedcity = "";
-
-  constructor() { }
+  constructor(private registerService: RegistrationService) { }
 
   ngOnInit(): void {
-    this.country = 
+    this.getCountries();
   }
 
-    public next(): void {
-      if (this.addressInfo.valid && this.currentStep !== this.steps.length) {
-        this.currentStep += 1;
-        return;
+  getCountries(){
+    this.registerService.allCountries().
+    subscribe(
+      data=> {
+        this.countryInfo = data.Countries;
       }
-  
-      this.steps = this.steps.map((step: any) => ({ ...step }));
-      this.addressInfo.markAllAsTouched();
-    }
-  
-    public prev() {
-      this.currentStep -= 1;
-    }
+    )
+  }
+
+  onChangeCountry(countryValue: any) {
+    this.stateInfo=this.countryInfo[countryValue].States;
+    this.cityInfo=this.stateInfo[0].Cities;
+    console.log(this.cityInfo);
+  }
+
+  onChangeState(stateValue: any) {
+    this.cityInfo=this.stateInfo[stateValue].Cities;
+  }
 }

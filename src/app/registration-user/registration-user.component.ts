@@ -32,7 +32,7 @@ export class RegistrationUserComponent{
   public form = new FormGroup({
     personalInfo: new FormGroup({
       gender: new FormControl(null, [Validators.required]),
-      initials:new FormControl("", Validators.required),
+      initials:new FormControl("", [Validators.required, Validators.maxLength(1)]),
       firstName: new FormControl("", Validators.required),
       lastName: new FormControl("", [Validators.required]),
       dateOfBirth: new FormControl(new Date(), [Validators.required,]),  // Validators.pattern("dd/MM/yyyy")
@@ -41,7 +41,7 @@ export class RegistrationUserComponent{
     }),
     addressInfo: new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
-      phoneNumber: new FormControl(undefined, [Validators.required]),
+      phoneNumber: new FormControl("",[ Validators.required,  Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]),
       postalCode: new FormControl("", Validators.required),
       country: new FormControl("", [Validators.required]),
       city: new FormControl("", [Validators.required]),
