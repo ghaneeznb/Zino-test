@@ -11,24 +11,18 @@ export class RegistrationUserComponent{
   public currentStep = 0;
   formDetails!: FormGroup;
 
-  public data = {
-    confirmation: '',
-    gender: ''
-  };
-
   public steps = [
     { 
       label: "Personal Info",
-      icon: "user",
-      isValid: this.isStepValid 
+      isValid: this.isStepValid,
+      validate: this.shouldValidate.bind(this)
     },
-    { label: "Address Info", 
-      icon: "marker-pin",
-      isValid: this.isStepValid
+    { label: "Address Info",
+      isValid: this.isStepValid,
+      validate: this.shouldValidate.bind(this)
     },
     {
       label: "Confirmation",
-      icon: "checkmark",
     },
   ];
 
@@ -55,9 +49,16 @@ export class RegistrationUserComponent{
     }),
   });
 
-
   public get currentGroup(): FormGroup {
     return this.getGroupAt(this.currentStep);
+  }
+
+  isStepValid(index: number): boolean {
+    return this.getGroupAt(index).valid || this.currentGroup.untouched;
+  }
+
+  shouldValidate(index: number): boolean {
+    return this.getGroupAt(index).touched && this.currentStep >= index;
   }
 
  next(): void {
@@ -74,10 +75,6 @@ export class RegistrationUserComponent{
 
  prev() {
     this.currentStep -= 1;
-  }
-
- isStepValid(index: number): boolean {
-    return this.getGroupAt(index).valid || this.currentGroup.untouched;
   }
 
 getGroupAt(index: number): FormGroup {

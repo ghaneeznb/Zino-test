@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
@@ -21,13 +22,17 @@ export class AddressInfoComponent{
   preferredCountries: CountryISO[] = [CountryISO.UnitedStates, 
     CountryISO.UnitedKingdom]
 
-    country= ["iran","india", "iraq"];
-    public selectedcountry = "iran";
+    country= [];
+    public selectedcountry = "";
 
-    city= ["kish", "tehran"];
-    public selectedcity = "kish";
+    city= [];
+    public selectedcity = "";
 
   constructor() { }
+
+  ngOnInit(): void {
+    this.country = 
+  }
 
     public next(): void {
       if (this.addressInfo.valid && this.currentStep !== this.steps.length) {
